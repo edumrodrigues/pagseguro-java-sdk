@@ -20,9 +20,12 @@
  */
 package br.com.uol.pagseguro.api.common.domain.builder;
 
+import java.util.List;
+
 import br.com.uol.pagseguro.api.common.domain.Address;
 import br.com.uol.pagseguro.api.common.domain.Phone;
 import br.com.uol.pagseguro.api.common.domain.Sender;
+import br.com.uol.pagseguro.api.common.domain.SenderDocument;
 import br.com.uol.pagseguro.api.utils.Builder;
 
 /**
@@ -43,6 +46,8 @@ public final class SenderBuilder implements Builder<Sender> {
   private String cpf;
 
   private String hash;
+
+  private List<SenderDocument> documents; // Alexandre Afonso
 
   /**
    * Set email of sender
@@ -139,6 +144,11 @@ public final class SenderBuilder implements Builder<Sender> {
     return this;
   }
 
+  public SenderBuilder withDocuments(List<SenderDocument> documents) {
+    this.documents = documents;
+    return this;
+  }
+
   /**
    * Build the sender
    *
@@ -191,6 +201,10 @@ public final class SenderBuilder implements Builder<Sender> {
       return senderBuilder.hash;
     }
 
+    @Override
+    public List<SenderDocument> getDocuments() { // Alexandre Afonso
+      return senderBuilder.documents;
+    }
   }
 
 }
