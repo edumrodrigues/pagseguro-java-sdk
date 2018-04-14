@@ -100,6 +100,8 @@ public interface TransactionDetail extends TransactionIdentify {
    */
   BigDecimal getExtraAmount();
 
+  Integer getInstallmentCount();
+
   /**
    * Payment Link
    *

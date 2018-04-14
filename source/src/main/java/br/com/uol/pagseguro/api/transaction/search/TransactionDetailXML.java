@@ -74,6 +74,8 @@ public class TransactionDetailXML implements TransactionDetail {
 
   private BigDecimal extraAmount;
 
+  private Integer installmentCount;
+
   private String paymentLink;
 
   private BigDecimal feeAmount;
@@ -262,6 +264,16 @@ public class TransactionDetailXML implements TransactionDetail {
   @XmlElement
   public void setFeeAmount(BigDecimal feeAmount) {
     this.feeAmount = feeAmount;
+  }
+
+  @XmlElement
+  public void setInstallmentCount(Integer installmentCount) {
+    this.installmentCount = installmentCount;
+  }
+
+  @Override
+  public Integer getInstallmentCount() {
+    return this.installmentCount;
   }
 
   @Override
