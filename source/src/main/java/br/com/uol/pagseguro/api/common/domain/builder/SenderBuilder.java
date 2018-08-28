@@ -20,13 +20,14 @@
  */
 package br.com.uol.pagseguro.api.common.domain.builder;
 
-import java.util.List;
-
 import br.com.uol.pagseguro.api.common.domain.Address;
+import br.com.uol.pagseguro.api.common.domain.Document;
 import br.com.uol.pagseguro.api.common.domain.Phone;
 import br.com.uol.pagseguro.api.common.domain.Sender;
-import br.com.uol.pagseguro.api.common.domain.SenderDocument;
 import br.com.uol.pagseguro.api.utils.Builder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Builder for Sender
@@ -36,18 +37,13 @@ import br.com.uol.pagseguro.api.utils.Builder;
 public final class SenderBuilder implements Builder<Sender> {
 
   private String email;
-
   private String name;
-
   private Phone phone;
-
   private Address address;
-
   private String cpf;
-
   private String hash;
-
-  private List<SenderDocument> documents; // Alexandre Afonso
+  private String ip;
+  private List<Document> documents = new ArrayList<Document>();
 
   /**
    * Set email of sender
@@ -144,8 +140,52 @@ public final class SenderBuilder implements Builder<Sender> {
     return this;
   }
 
-  public SenderBuilder withDocuments(List<SenderDocument> documents) {
-    this.documents = documents;
+  /**
+   * Set ip of sender
+   *
+   * @param ip IP
+   * @return Builder for sender
+   * @see Sender#getIp()
+   */
+  public SenderBuilder withIp(String ip) {
+    this.ip = ip;
+    return this;
+  }
+
+  /**
+   * Add document to sender
+   *
+   * @param document Document
+   * @return Builder for sender
+   * @see Sender#getDocuments()
+   */
+  public SenderBuilder addDocument(Document document) {
+    documents.add(document);
+    return this;
+  }
+
+  /**
+   * Add document to sender
+   *
+   * @param documentBuilder Builder for Document
+   * @return Builder for sender
+   * @see Sender#getDocuments()
+   */
+  public SenderBuilder addDocument(Builder<Document> documentBuilder) {
+    return addDocument(documentBuilder.build());
+  }
+
+  /**
+   * Add document to sender
+   *
+   * @param documents Documents
+   * @return Builder for sender
+   * @see Sender#getDocuments()
+   */
+  public SenderBuilder addDocuments(Iterable<? extends Document> documents) {
+    for (Document document : documents) {
+      addDocument(document);
+    }
     return this;
   }
 
@@ -202,9 +242,15 @@ public final class SenderBuilder implements Builder<Sender> {
     }
 
     @Override
-    public List<SenderDocument> getDocuments() { // Alexandre Afonso
+    public String getIp() {
+      return senderBuilder.ip;
+    }
+
+    @Override
+    public List<Document> getDocuments() {
       return senderBuilder.documents;
     }
+
   }
 
 }

@@ -21,7 +21,6 @@
 package br.com.uol.pagseguro.api.common.domain.builder;
 
 import br.com.uol.pagseguro.api.common.domain.Receiver;
-import br.com.uol.pagseguro.api.common.domain.Split;
 import br.com.uol.pagseguro.api.utils.Builder;
 
 /**
@@ -31,41 +30,17 @@ import br.com.uol.pagseguro.api.utils.Builder;
  */
 public final class ReceiverBuilder implements Builder<Receiver> {
 
-  private Split split;
-  private String publicKey;
-
-  /**
-   * Set split of receiver
-   *
-   * @param split Split
-   * @return Builder for receiver
-   * @see Receiver#getSplit()
-   */
-  public ReceiverBuilder withSplit(Split split) {
-    this.split = split;
-    return this;
-  }
-
-  /**
-   * Set split of receiver
-   *
-   * @param splitBuilder Builder for Split
-   * @return Builder for receiver
-   * @see Receiver#getSplit()
-   */
-  public ReceiverBuilder withSplit(Builder<Split> splitBuilder) {
-    return withSplit(splitBuilder.build());
-  }
+  private String email;
 
   /**
    * Set public key of receiver
    *
-   * @param publicKey Public key
+   * @param email Email
    * @return Builder for receiver
-   * @see Receiver#getPublicKey()
+   * @see Receiver#getEmail()
    */
-  public ReceiverBuilder withPublicKey(String publicKey) {
-    this.publicKey = publicKey;
+  public ReceiverBuilder withEmail(String email) {
+    this.email = email;
     return this;
   }
 
@@ -92,13 +67,8 @@ public final class ReceiverBuilder implements Builder<Receiver> {
     }
 
     @Override
-    public String getPublicKey() {
-      return receiverBuilder.publicKey;
-    }
-
-    @Override
-    public Split getSplit() {
-      return receiverBuilder.split;
+    public String getEmail() {
+      return receiverBuilder.email;
     }
   }
 }

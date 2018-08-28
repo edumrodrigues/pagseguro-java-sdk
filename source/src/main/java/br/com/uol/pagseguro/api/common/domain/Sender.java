@@ -73,5 +73,17 @@ public interface Sender {
    */
   String getHash();
 
-  List<? extends SenderDocument> getDocuments(); // Alexandre Afonso
+  /**
+   * Get the IP of sender
+   * @return Ip
+   */
+  String getIp();
+
+  /**
+   * Get documents of sender
+   *
+   * @return Documents
+   * @see Document
+   */
+  List<? extends Document> getDocuments();
 }

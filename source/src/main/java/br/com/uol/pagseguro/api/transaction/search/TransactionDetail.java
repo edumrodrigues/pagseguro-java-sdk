@@ -41,6 +41,8 @@ import br.com.uol.pagseguro.api.transaction.TransactionIdentify;
  */
 public interface TransactionDetail extends TransactionIdentify {
 
+  
+  Integer getInstallmentCount(); // AlgaWorks
 
   /**
    * Informs the code that was used to make reference to the payment. This code was provided at the
@@ -99,8 +101,6 @@ public interface TransactionDetail extends TransactionIdentify {
    * @return Net Amount
    */
   BigDecimal getExtraAmount();
-
-  Integer getInstallmentCount();
 
   /**
    * Payment Link

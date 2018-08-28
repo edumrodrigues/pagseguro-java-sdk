@@ -87,16 +87,20 @@ public class SessionResource {
   }
 
   /**
-   * Create split session by application
+   * Create session by application for direct pre approval
    *
+   * @param authorizationCode Authorization code
    * @return Response of session create
    * @see CreatedSession
    */
-  public CreatedSession createSplitApplication() {
+  public CreatedSession createDirectPreApproval(String authorizationCode) {
+    final RequestMap map = new RequestMap();
+    map.putString("authorizationCode", authorizationCode);
     final HttpResponse response;
     try {
-      response = httpClient.execute(HttpMethod.POST, String.format(Endpoints.SESSION_SPLIT_CREATE_APPLICATION,
-              pagSeguro.getHost()), null, null);
+      response = httpClient.execute(HttpMethod.POST,
+              String.format(Endpoints.SESSION_DIRECT_PRE_APPROVAL_CREATE_APPLICATION, pagSeguro.getHost(),
+                      map.toUrlEncode(CharSet.ENCODING_UTF)), null, null);
     } catch (IOException e) {
       throw new PagSeguroLibException(e);
     }
@@ -105,15 +109,15 @@ public class SessionResource {
   }
 
   /**
-   * Create split seller session
+   * Create seller session for direct pre approval
    *
    * @return Response of session create
    * @see CreatedSession
    */
-  public CreatedSession createSplitSeller() {
+  public CreatedSession createDirectPreApproval() {
     final HttpResponse response;
     try {
-      response = httpClient.execute(HttpMethod.POST, String.format(Endpoints.SESSION_SPLIT_CREATE,
+      response = httpClient.execute(HttpMethod.POST, String.format(Endpoints.SESSION_DIRECT_PRE_APPROVAL_CREATE,
               pagSeguro.getHost()), null, null);
     } catch (IOException e) {
       throw new PagSeguroLibException(e);

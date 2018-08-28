@@ -20,13 +20,12 @@
  */
 package br.com.uol.pagseguro.api.common.domain.xml;
 
-import java.util.List;
-
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
 
+import br.com.uol.pagseguro.api.common.domain.Document;
 import br.com.uol.pagseguro.api.common.domain.Sender;
+
+import java.util.List;
 
 /**
  * Implementation of {@code Sender}
@@ -47,7 +46,9 @@ public class SenderXML implements Sender {
 
   private String hash;
 
-  private List<SenderDocumentXML> documents; // Alexandre Afonso
+  private String ip = null;
+
+  private List<DocumentXML> documents = null;
 
   SenderXML() {
   }
@@ -112,15 +113,25 @@ public class SenderXML implements Sender {
     this.hash = hash;
   }
 
-  @XmlElement(name = "document")
-  @XmlElementWrapper(name = "documents")
-  public void setDocuments(List<SenderDocumentXML> documents) {
+  //@TODO validate methods below (documents and ip) and add they to toString
+  @Override
+  public List<DocumentXML> getDocuments() {
+    return documents;
+  }
+
+  @XmlElement
+  public void setDocuments(List<DocumentXML> documents) {
     this.documents = documents;
   }
 
   @Override
-  public List<SenderDocumentXML> getDocuments() {
-    return documents;
+  public String getIp() {
+    return ip;
+  }
+
+  @XmlElement
+  public void setIp(String ip) {
+    this.ip = ip;
   }
 
   @Override
@@ -132,7 +143,7 @@ public class SenderXML implements Sender {
         ", address=" + address +
         ", cpf='" + cpf + '\'' +
         ", hash='" + hash + '\'' +
-        ", documents='" + documents + '\'' +
+        ", documents=" + documents +
         '}';
   }
 }

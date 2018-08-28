@@ -63,7 +63,7 @@ public interface TransactionPaymentMethod {
    */
   enum Code {
 
-    CREDIT_CARD_VISA(101, "Cartão de crédito Visa"),
+    CREDIT_CARD_VISA(101, "Cartão de crédito Visa"), // AlgaWorks: adicionada essa e outras propriedades abaixo.
     CREDIT_CARD_MASTERCARD(102, "Cartão de crédito MasterCard"),
     CREDIT_CARD_AMEX(103, "Cartão de crédito American Express"),
     CREDIT_CARD_DINERS(104, "Cartão de crédito Diners"),
@@ -103,6 +103,7 @@ public interface TransactionPaymentMethod {
     BANK_DEPOSIT_HSBC(702, "Depósito em conta - HSBC"),
 
 
+
     /**
      * Used when they have not the code
      *
@@ -118,7 +119,8 @@ public interface TransactionPaymentMethod {
     UNRECOGNIZED(null, "Não reconhecido");
 
     private Integer codeId;
-    private String description;
+
+    private final String description;
 
     /**
      * Constructor
@@ -169,7 +171,7 @@ public interface TransactionPaymentMethod {
      */
     ONLINE_DEBIT(3),
 
-    PAGSEGURO_BALANCE(4),
+    PAGSEGURO_BALANCE(4), // AlgaWorks: adicionados o 4, 5 e 7
 
     OI_PAGGO(5),
 
