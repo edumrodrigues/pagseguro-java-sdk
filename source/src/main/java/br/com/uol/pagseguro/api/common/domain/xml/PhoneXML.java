@@ -44,7 +44,7 @@ public class PhoneXML implements Phone {
   }
 
   @XmlElement(name = "number")
-  public void setPhoneNumber(String phoneNumber) {
+  public void setNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
   }
 
