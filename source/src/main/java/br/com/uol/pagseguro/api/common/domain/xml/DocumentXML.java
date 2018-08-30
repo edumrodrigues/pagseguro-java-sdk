@@ -28,7 +28,7 @@ public class DocumentXML implements Document {
     }
 
     @XmlElement(name = "documentValue")
-    public void setDocumentValue(String value) {
+    public void setValue(String value) {
         this.value = value;
     }
 
