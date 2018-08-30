@@ -18,7 +18,7 @@ public class DocumentXML implements Document {
     }
 
     @XmlElement(name = "documentType")
-    public void setDocumentType(DocumentType type) {
+    public void setType(DocumentType type) {
         this.type = type;
     }
 
