@@ -17,7 +17,7 @@ public class DocumentXML implements Document {
         return type;
     }
 
-    @XmlElement(name = "documentType")
+    @XmlElement(name = "type")
     public void setType(DocumentType type) {
         this.type = type;
     }
@@ -27,7 +27,7 @@ public class DocumentXML implements Document {
         return value;
     }
 
-    @XmlElement(name = "documentValue")
+    @XmlElement(name = "value")
     public void setValue(String value) {
         this.value = value;
     }
