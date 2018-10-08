@@ -50,7 +50,7 @@ public class SenderV3MapConverter extends AbstractMapConverter<Sender> {
   protected void convert(RequestMap requestMap, Sender sender) {
     requestMap.putString("sender.email", sender.getEmail());
     requestMap.putString("sender.name", sender.getName());
-    requestMap.putString("sender.CPF", sender.getCpf());
+    requestMap.putString("sender.cpf", sender.getCpf());
     requestMap.putString("sender.hash", sender.getHash());
     requestMap.putMap(SENDER_PHONE_MC.convert(sender.getPhone()));
     requestMap.putMap(SENDER_ADDRESS_MC.convert(sender.getAddress()));
