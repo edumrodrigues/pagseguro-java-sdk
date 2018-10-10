@@ -119,7 +119,8 @@ public class SenderXML implements Sender {
     return documents;
   }
 
-  @XmlElement
+  @XmlElement(name = "document")
+  @XmlElementWrapper(name = "documents")
   public void setDocuments(List<DocumentXML> documents) {
     this.documents = documents;
   }
