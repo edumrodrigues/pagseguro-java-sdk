@@ -20,7 +20,9 @@
  */
 package br.com.uol.pagseguro.api.common.domain.xml;
 
+
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 
 import br.com.uol.pagseguro.api.common.domain.Document;
 import br.com.uol.pagseguro.api.common.domain.Sender;
